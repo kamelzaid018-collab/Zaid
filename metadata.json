@@ -1,0 +1,6 @@
+{
+  "name": "APK Feature Studio",
+  "description": "Professional mobile APK analysis, feature modification, AI code editing, resource editing, and APK building suite.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
