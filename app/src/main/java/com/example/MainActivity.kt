@@ -16,9 +16,10 @@ import com.example.ui.theme.MyApplicationTheme
 import com.example.ui.theme.StudioDarkBg
 
 class MainActivity : ComponentActivity() {
-  override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     enableEdgeToEdge()
+    com.example.ui.components.AiStudioConfig.init(applicationContext)
     val projectManager = ProjectManager(applicationContext)
 
     setContent {

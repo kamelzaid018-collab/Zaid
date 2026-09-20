@@ -61,7 +61,7 @@ object AiFeatureEngine {
         project: StudioProject,
         userPrompt: String
     ): FeaturePlan = withContext(Dispatchers.IO) {
-        val apiKey = try { BuildConfig.GEMINI_API_KEY } catch (e: Throwable) { "" }
+        val apiKey = com.example.ui.components.AiStudioConfig.getApiKey(null)
 
         // Gather relevant project context (Manifest, package, source structure)
         val fileTreeOverview = project.rootDir.walkTopDown().take(50).map { file ->

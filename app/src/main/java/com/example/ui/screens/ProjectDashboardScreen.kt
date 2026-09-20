@@ -22,6 +22,7 @@ import com.example.model.ProjectTemplate
 import com.example.model.ProjectType
 import com.example.model.StudioProject
 import com.example.ui.components.ExportToAndroidStudioDialog
+import com.example.ui.components.GoogleAiStudioSettingsDialog
 import com.example.ui.components.InstalledAppsPickerDialog
 import com.example.ui.theme.*
 import java.text.SimpleDateFormat
@@ -41,6 +42,7 @@ fun ProjectDashboardScreen(
     var showNewProjectDialog by remember { mutableStateOf(false) }
     var showImportApkDialog by remember { mutableStateOf(false) }
     var showInstalledAppsDialog by remember { mutableStateOf(false) }
+    var showAiStudioSettingsDialog by remember { mutableStateOf(false) }
     var projectToExport by remember { mutableStateOf<StudioProject?>(null) }
 
     if (projectToExport != null) {
@@ -78,7 +80,12 @@ fun ProjectDashboardScreen(
                         }
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = StudioDarkSurface)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = StudioDarkSurface),
+                actions = {
+                    IconButton(onClick = { showAiStudioSettingsDialog = true }) {
+                        Icon(Icons.Default.AutoAwesome, contentDescription = "Google AI Studio Settings", tint = StudioAccentPurple)
+                    }
+                }
             )
         },
         floatingActionButton = {
@@ -241,6 +248,13 @@ fun ProjectDashboardScreen(
                 showInstalledAppsDialog = false
                 onOpenProject(newProj)
             }
+        )
+    }
+
+    // Google AI Studio Settings Dialog
+    if (showAiStudioSettingsDialog) {
+        GoogleAiStudioSettingsDialog(
+            onDismiss = { showAiStudioSettingsDialog = false }
         )
     }
 }
